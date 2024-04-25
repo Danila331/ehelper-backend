@@ -1,0 +1,27 @@
+{{ define "sign" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/form.css">
+    <title>Sign Ehelper</title>
+</head>
+<body>
+    <div class="header">
+        <a class="header__logo" href="/"><span style="color:#6600BA">E</span>helper</a>
+    </div>
+    <h2 class="form__header">Welcome to Ehelper!</h2>
+    <div class="form__minitext">
+        <p class="form__text">Если есть уже аккаунт?</p>
+        <a href="/login" class="form__link">Login</a>
+    </div>
+    
+    <form action="/sign_submit" method="post" class="form">
+        <input class="form__field" type="email" name="email" placeholder="Email" required>
+        <input class="form__field" type="password" name="password" placeholder="Password" required>
+        <input class="form__submit" type="submit" value="Зарегистрироваться">
+    </form>
+</body>
+</html>
+{{ end }}

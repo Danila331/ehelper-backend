@@ -1,0 +1,56 @@
+{{ define "statistic"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="/static/css/statistic.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <a class="header__logo" href="/"><span style="color:#6600BA">E</span>helper</a>
+        <a class="header__logo" href="/conf/statistic" style="color: rgb(21, 173, 193); font-size: 16px">/Конференции</a>
+        <a class="header__logo" href="/chat/statistic" style="color: rgb(21, 173, 193); font-size: 16px; color:rgba(19, 152, 170, 0.5)">/Чат</a>
+    </div>
+    <div class="main">
+        <div class="main__navigation">
+            <p class="naviagtion__item">Навигация</p>
+            <div class="navigation__links">
+                <a href="/chat/statistic" class="navigation__link now">
+                    <img src="/static/images/main/table-grid.png" alt="/statistic" class="navigation__icon">
+                    <p class="navigation__header">Таблица</p>
+                </a>
+            </div>
+        </div>
+        <div class="block__analis">
+            <a class="analis__row" href="#">
+                <p class="analis__pul">Пользователь</p>
+                <p class="analis__pul">Спокойствие</p>
+                <p class="analis__pul">Раздражительность</p>
+                <p class="analis__pul">Открытость</p>
+                <p class="analis__pul">Общительность</p>
+                <p class="analis__pul">Агрессивность</p>
+                <p class="analis__pul">Уравновешенность</p>
+                <p class="analis__pul">Депрессивность</p>
+            </a>
+            {{ range . }}
+            <a class="analis__row" href="#">
+                <p class="analis__pul">{{.UserName}}</p>
+                <p class="analis__pul">{{ .Calm }} б</p>
+                <p class="analis__pul">{{ .Disgust }} б</p>
+                <p class="analis__pul">{{ .Openness }} б</p>
+                <p class="analis__pul">{{ .Sociability }} б</p>
+                <p class="analis__pul">{{ .Anger }} б</p>
+                <p class="analis__pul">{{ .Balance }} б</p>
+                <p class="analis__pul">{{ .Depression }} б</p>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</body>
+</html>
+{{ end }}

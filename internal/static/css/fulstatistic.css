@@ -1,0 +1,143 @@
+body {
+    margin: 0px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.header {
+    display: flex;
+    background-color: #FFFFFF;
+    flex-direction: row;
+    align-items: center;
+    max-width: 100%;
+    padding: 10px 20px 10px;
+    border: #999999 solid 1px;
+    border-radius: 10px;
+    margin: 10px 10px 10px;
+}
+
+.header__logo {
+    margin: 0px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #292929;
+    font-size: 26px;
+    margin-left: 10px;
+}
+
+.header__logo:hover {
+    font-size: 25px;
+    opacity: .8;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 20% 79%;
+    column-gap: 1%;
+    margin: 10px 10px 10px;
+}
+
+.main__navigation {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px 10px;
+    border: #999999 solid 1px;
+    border-radius: 10px;
+    height: 85vh;
+}
+
+.naviagtion__item {
+    margin: 0px;
+    font-size: 14px;
+    color: #292929;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.navigation__links {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation__link {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    background-color: #29292918;
+    padding: 4px 5px 4px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.navigation__header {
+    margin: 0px;
+    color: #292929;
+    font-size: 12px;
+}
+
+.navigation__icon {
+    width: 24px;
+    margin-right: 10px;
+}
+
+.block__analis {
+    border: #999999 1px solid;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 55% 45%;
+}
+
+.analis__block1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.analis__text2 {
+    align-items: center;
+}
+.analis__block1-header {
+    text-align: center;
+    font-size: 30px;
+    margin: auto;
+    width: 100%;
+}
+.analis__block2 {
+    padding-left: 40px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+.analis__text {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.headre__logo-violet {
+    color: #6600BA;
+}
+
+.analis__header {
+    font-size: 20px;
+    color: #292929;
+    margin-top: 20px;
+}
+
+.analis__pul {
+    font-size: 18px;
+    font-weight: 600;
+    color: #292929;
+    margin: 0px;
+    margin-top: 30px;
+}
+
+.now {
+    background-color: #2929294d;
+}

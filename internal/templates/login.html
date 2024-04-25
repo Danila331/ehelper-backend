@@ -1,0 +1,27 @@
+{{ define "login" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/form.css">
+    <title>Add file Ehelper</title>
+</head>
+<body>
+    <div class="header">
+        <a class="header__logo" href="/"><span style="color:#6600BA">E</span>helper</a>
+    </div>
+    <h2 class="form__header">Wow, we glad to see you again!</h2>
+    <div class="form__minitext">
+        <p class="form__text">Если у вас нет еще аккаунта.</p>
+        <a href="/auth" class="form__link">Sign up</a>
+    </div>
+    
+    <form action="/login_submit" method="post" class="form">
+        <input class="form__field" type="email" name="email" placeholder="Email" required>
+        <input class="form__field" type="password" name="password" placeholder="Password" required>
+        <input class="form__submit" type="submit" value="Авторизоваться">
+    </form>
+</body>
+</html>
+{{ end }}
