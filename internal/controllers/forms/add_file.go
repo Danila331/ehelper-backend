@@ -8,6 +8,7 @@ import (
 	"text/template"
 
 	"github.com/Danila331/mifiotsos/internal/models"
+	"github.com/Danila331/mifiotsos/internal/pkg"
 	"github.com/labstack/echo/v4"
 )
 
@@ -56,7 +57,10 @@ func AddFileForm(c echo.Context) error {
 
 	println("File uploaded successfully")
 	// Закончился код загрузки файла
-
+	err = pkg.S3LoadFile(dstPath)
+	if err != nil {
+		return err
+	}
 	htmlFiles := []string{
 		filepath.Join("./", "templates", "submit", "addfile_submit.html"),
 	}

@@ -1,7 +1,7 @@
 package pkg
 
 import (
-	"log"
+	"fmt"
 	"os"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -11,42 +11,42 @@ import (
 )
 
 func S3LoadFile(filePath string) error {
-	// Указываем регион, ключ доступа и секретный ключ
-	sess, err := session.NewSession(&aws.Config{
-		Region:      aws.String("us-west-2"), // Замените на нужный регион
-		Credentials: credentials.NewStaticCredentials("YOUR_ACCESS_KEY_ID", "YOUR_SECRET_ACCESS_KEY", ""),
-	})
-
-	if err != nil {
-		return err
+	cfg := aws.Config{
+		Credentials: credentials.NewStaticCredentials(
+			"K38JZH3070T8QFYVDBWF",                     // ACCESS_KEY из вашего окружения
+			"BdKTBVXrMzpXWru0FyD3i7JGVChByZATDAFhIYyx", // SECRET_ACCESS_KEY из вашего окружения
+			""), // token необязательный; оставьте пустым, если не нужен
+		Endpoint:         aws.String("https://s3.timeweb.cloud"), // ENDPOINT из вашего окружения
+		Region:           aws.String("ru-1"),                     // REGION_NAME из вашего окружения
+		S3ForcePathStyle: aws.Bool(true),
 	}
 
-	// Создаем новый экземпляр сервиса S3
+	// Создание новой сессии S3
+	sess := session.Must(session.NewSession(&cfg))
+
+	// Создание нового S3 клиента
 	svc := s3.New(sess)
 
-	// Указываем имя бакета и путь к файлу, который хотим загрузить
-	bucketName := "YOUR_BUCKET_NAME" // Путь к вашему локальному файлу
-
-	// Открываем файл
+	// Открытие файла
 	file, err := os.Open(filePath)
 	if err != nil {
-		return err
+		return fmt.Errorf("unable to open file: %v", err)
 	}
 	defer file.Close()
 
-	// Определяем имя файла в S3 (можно использовать имя файла из локальной системы)
-	key := file.Name()
-
-	// Выполняем загрузку файла в S3
-	_, err = svc.PutObject(&s3.PutObjectInput{
-		Bucket: aws.String(bucketName),
-		Key:    aws.String(key),
+	// Создание объекта PutObjectInput
+	input := &s3.PutObjectInput{
 		Body:   file,
-	})
-	if err != nil {
-		return err
+		Bucket: aws.String("001b3177-49d13eec-a629-4743-ba8e-e47b1894d535"),
+		Key:    aws.String(file.Name()),
 	}
 
-	log.Printf("File uploaded successfully to bucket: %s", bucketName)
+	// Загрузка файла в S3
+	_, err = svc.PutObject(input)
+	if err != nil {
+		return fmt.Errorf("error uploading file to S3: %v", err)
+	}
+
+	fmt.Printf("File %s uploaded successfully to bucket %s\n", file.Name(), "001b3177-49d13eec-a629-4743-ba8e-e47b1894d535")
 	return nil
 }
