@@ -37,16 +37,23 @@ func (u *User) Create() error {
 	return nil
 }
 
-
-func (u *User) ReadByEmail() (User, error) {
-	conn, err : store.ConnectDB()
+func (u *User) ReadByEmail(email string) (User, error) {
+	conn, err := store.ConnectDB()
 	if err != nil {
 		return User{}, err
 	}
 	defer conn.Close()
-	
-}
 
+	query := "SELECT id, password, email FROM users WHERE email=$1"
+	row := conn.QueryRow(query, email)
+
+	var user User
+	err = row.Scan(&user.Id, &user.Password, &user.Email)
+	if err != nil {
+		return User{}, err
+	}
+	return user, nil
+}
 
 func (u *User) Update() error {
 	conn, err := store.ConnectDB()

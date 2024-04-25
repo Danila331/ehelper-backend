@@ -1,20 +1,20 @@
-{{ define "addfile-submit" }}
+{{ define "err" }}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/form.css">
-    <title>Succesful Ehelper</title>
+    <title>Error Ehelper</title>
 </head>
 <body>
     <div class="header">
         <a class="header__logo" href="/"><span style="color:#6600BA">E</span>helper</a>
     </div>
-    <h2 class="form__header">Ваш файл успешно загружен!</h2>
+    <h2 class="form__header">Ошибка {{ .Number }}</h2>
     <div class="form__minitext">
-        <p class="form__text">Перейдите в статистику, чтобы увидеть результат.</p>
-        <a href="/conf/statistic" class="form__link">Statistic</a>
+        <p class="form__text">{{ .ErrorString }}</p>
+        <a href="/{{ .BackLink }}" class="form__link">Назад</a>
     </div>
 </body>
 </html>

@@ -44,6 +44,6 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println("Таблица конференций успешно создана")
+	fmt.Println("Все таблицы были успешно созданы")
 	server.StartServer()
 }

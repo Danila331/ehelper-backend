@@ -23,12 +23,12 @@ body {
     text-decoration: none;
     color: #292929;
     font-size: 26px;
-    margin-left: 10px;
+    margin-left: 15px;
+    transition: .2s;
 }
 
 .header__logo:hover {
-    font-size: 25px;
-    opacity: .8;
+    opacity: .7;
 }
 
 .main {

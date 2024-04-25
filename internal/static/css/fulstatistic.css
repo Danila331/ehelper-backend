@@ -23,12 +23,12 @@ body {
     text-decoration: none;
     color: #292929;
     font-size: 26px;
-    margin-left: 10px;
+    margin-left: 15px;
+    transition: .2s;
 }
 
 .header__logo:hover {
-    font-size: 25px;
-    opacity: .8;
+    opacity: .7;
 }
 
 .main {
@@ -71,6 +71,11 @@ body {
     padding: 4px 5px 4px;
     border-radius: 10px;
     margin-bottom: 5px;
+    transition: .2s;
+}
+
+.navigation__link:hover {
+    background-color: #2929292f;
 }
 
 .navigation__header {
@@ -139,5 +144,5 @@ body {
 }
 
 .now {
-    background-color: #2929294d;
+    background-color: #29292945;
 }

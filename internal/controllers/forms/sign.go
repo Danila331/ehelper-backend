@@ -18,7 +18,7 @@ func SignForm(c echo.Context) error {
 		return err
 	}
 	htmlFiles := []string{
-		filepath.Join("./", "templates", "sign_submit.html"),
+		filepath.Join("./", "templates", "submit", "sign_submit.html"),
 	}
 
 	templ, err := template.ParseFiles(htmlFiles...)

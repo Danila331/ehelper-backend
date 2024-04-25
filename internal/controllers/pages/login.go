@@ -9,7 +9,7 @@ import (
 
 func LoginPage(c echo.Context) error {
 	htmlFiles := []string{
-		filepath.Join("./", "templates", "login.html"),
+		filepath.Join("./", "templates", "forms", "login.html"),
 	}
 
 	templ, err := template.ParseFiles(htmlFiles...)

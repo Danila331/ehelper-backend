@@ -58,7 +58,7 @@ func AddFileForm(c echo.Context) error {
 	// Закончился код загрузки файла
 
 	htmlFiles := []string{
-		filepath.Join("./", "templates", "addfile-submit.html"),
+		filepath.Join("./", "templates", "submit", "addfile_submit.html"),
 	}
 
 	templ, err := template.ParseFiles(htmlFiles...)
@@ -66,7 +66,7 @@ func AddFileForm(c echo.Context) error {
 		return err
 	}
 
-	templ.ExecuteTemplate(c.Response(), "addfile-submit", nil)
+	templ.ExecuteTemplate(c.Response(), "addfile_submit", nil)
 
 	return nil
 }

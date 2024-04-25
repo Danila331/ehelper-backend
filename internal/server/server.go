@@ -21,6 +21,7 @@ func StartServer() {
 	e.POST("/sign_submit", forms.SignForm)
 
 	e.GET("/login", pages.LoginPage)
+	e.POST("/login_submit", forms.LoginForm)
 
 	e.GET("/chat/statistic", pages.StatisticPageChat)
 	// e.GET("/chat/fulstatistic", pages.FulStatisticPageChat)

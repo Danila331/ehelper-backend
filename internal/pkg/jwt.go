@@ -14,15 +14,17 @@ var (
 
 // Claims содержит информацию, которую вы хотите закодировать в токене
 type Claims struct {
-	UserID int `json:"user_id"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 	jwt.StandardClaims
 }
 
 // Генерация токена
-func GenerateToken(userID int) (string, error) {
+func GenerateToken(email, password string) (string, error) {
 	// Создание структуры с данными для токена
 	claims := Claims{
-		UserID: userID,
+		Email:    email,
+		Password: password,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(time.Hour * 160).Unix(), // Токен действителен в течение 24 часов
 		},
@@ -40,20 +42,20 @@ func GenerateToken(userID int) (string, error) {
 	return tokenString, nil
 }
 
-// Функция для извлечения ID пользователя из токена
-func ExtractUserIDFromToken(tokenString string) (int, error) {
+// Функция для извлечения Email пользователя из токена
+func ExtractUserIDFromToken(tokenString string) (string, error) {
 	// Парсинг токена с помощью секретного ключа
 	token, err := jwt.ParseWithClaims(tokenString, &Claims{}, func(token *jwt.Token) (interface{}, error) {
 		return secretKey, nil
 	})
 	if err != nil {
-		return 0, err
+		return "", err
 	}
 
 	// Проверка валидности токена
 	if claims, ok := token.Claims.(*Claims); ok && token.Valid {
-		return claims.UserID, nil
+		return claims.Email, nil
 	} else {
-		return 0, fmt.Errorf("invalid token")
+		return "", fmt.Errorf("invalid token")
 	}
 }
