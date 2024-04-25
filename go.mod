@@ -5,7 +5,7 @@ go 1.21.1
 require (
 	git.sr.ht/~sbinet/gg v0.5.0 // indirect
 	github.com/ajstarks/svgo v0.0.0-20211024235047-1546f124cd8b // indirect
-	github.com/aws/aws-sdk-go v1.51.25 // indirect
+	github.com/aws/aws-sdk-go v1.51.28 // indirect
 	github.com/campoy/embedmd v1.0.0 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/go-echarts/go-echarts/v2 v2.3.3 // indirect

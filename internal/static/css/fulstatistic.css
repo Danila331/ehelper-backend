@@ -44,7 +44,7 @@ body {
     padding: 10px 20px 10px;
     border: #999999 solid 1px;
     border-radius: 10px;
-    height: 85vh;
+    height: inherit;
 }
 
 .naviagtion__item {
@@ -94,6 +94,7 @@ body {
     border-radius: 10px;
     display: grid;
     grid-template-columns: 55% 45%;
+    min-height: 92vh;
 }
 
 .analis__block1 {

@@ -43,7 +43,7 @@ func GenerateToken(email, password string) (string, error) {
 }
 
 // Функция для извлечения Email пользователя из токена
-func ExtractUserIDFromToken(tokenString string) (string, error) {
+func ExtractEmailFromToken(tokenString string) (string, error) {
 	// Парсинг токена с помощью секретного ключа
 	token, err := jwt.ParseWithClaims(tokenString, &Claims{}, func(token *jwt.Token) (interface{}, error) {
 		return secretKey, nil

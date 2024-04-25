@@ -2,6 +2,7 @@ package server
 
 import (
 	"github.com/Danila331/mifiotsos/internal/controllers/forms"
+	"github.com/Danila331/mifiotsos/internal/controllers/midleware"
 	"github.com/Danila331/mifiotsos/internal/controllers/pages"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -13,21 +14,28 @@ func StartServer() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Static("/static", "./static")
+	// e.Use(midleware.AuthMiddleware)
+	// маршруты для обычных смертных
+	sign := e.Group("/sign")
+	sign.GET("/", pages.SignPage)
+	sign.POST("/submit", forms.SignForm)
 
-	e.GET("/", pages.AddFilePage)
-	e.POST("/add-file_submit", forms.AddFileForm)
+	login := e.Group("/login")
+	login.GET("/", pages.LoginPage)
+	login.POST("/submit", forms.LoginForm)
 
-	e.GET("/sign", pages.SignPage)
-	e.POST("/sign_submit", forms.SignForm)
+	addFile := e.Group("/add-file")
+	addFile.Use(midleware.AuthMiddleware)
+	addFile.GET("/", pages.AddFilePage)
+	addFile.POST("/submit", forms.AddFileForm)
 
-	e.GET("/login", pages.LoginPage)
-	e.POST("/login_submit", forms.LoginForm)
-
-	e.GET("/chat/statistic", pages.StatisticPageChat)
+	chat := e.Group("/chats")
+	chat.Use(midleware.AuthMiddleware)
+	chat.GET("/statistic", pages.StatisticPageChat)
 	// e.GET("/chat/fulstatistic", pages.FulStatisticPageChat)
-	e.GET("/conf/fulstatistic", pages.FulStatisticPageConf)
-	e.GET("/conf/statistic", pages.StatisticPageConf)
-	e.GET("/conf/graphics", pages.GraphiksPageConf)
+	chat.GET("/conf/fulstatistic", pages.FulStatisticPageConf)
+	chat.GET("/conf/statistic", pages.StatisticPageConf)
+	chat.GET("/conf/graphics", pages.GraphiksPageConf)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":8081"))
