@@ -33,7 +33,7 @@ body {
 
 .main {
     display: grid;
-    grid-template-columns: 20% 79%;
+    grid-template-columns: 16% 83%;
     column-gap: 1%;
     margin: 10px 10px 10px;
 }

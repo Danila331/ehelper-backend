@@ -16,6 +16,8 @@ func StartServer() {
 	e.Static("/static", "./static")
 	// e.Use(midleware.AuthMiddleware)
 	// маршруты для обычных смертных
+	e.GET("/", pages.MainPage)
+
 	sign := e.Group("/sign")
 	sign.GET("/", pages.SignPage)
 	sign.POST("/submit", forms.SignForm)
@@ -29,13 +31,14 @@ func StartServer() {
 	addFile.GET("/", pages.AddFilePage)
 	addFile.POST("/submit", forms.AddFileForm)
 
-	chat := e.Group("/chats")
+	chat := e.Group("/chat")
 	chat.Use(midleware.AuthMiddleware)
 	chat.GET("/statistic", pages.StatisticPageChat)
 	// e.GET("/chat/fulstatistic", pages.FulStatisticPageChat)
-	chat.GET("/conf/fulstatistic", pages.FulStatisticPageConf)
-	chat.GET("/conf/statistic", pages.StatisticPageConf)
-	chat.GET("/conf/graphics", pages.GraphiksPageConf)
+	conf := e.Group("/conf")
+	conf.GET("/fulstatistic", pages.FulStatisticPageConf)
+	conf.GET("/statistic", pages.StatisticPageConf)
+	conf.GET("/graphics", pages.GraphiksPageConf)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":8081"))

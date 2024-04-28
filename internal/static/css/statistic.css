@@ -10,11 +10,41 @@ body {
     background-color: #FFFFFF;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     max-width: 100%;
     padding: 10px 20px 10px;
     border: #999999 solid 1px;
     border-radius: 10px;
     margin: 10px 10px 10px;
+}
+
+.header__link {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 8px 14px 8px;
+    transition: .2s;
+}
+
+.header__link:hover {
+    background-color: rgba(30, 30, 30, 0.195);
+    border-radius: 10px;
+}
+
+.header__button {
+    text-decoration: none;
+    color: rgba(255, 255, 255);
+    padding: 11px 17px 11px;
+    background-color: rgba(19, 152, 170);
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    transition: .2s;
+    margin-right: 10px;
+}
+
+.header__button:hover {
+    opacity: .85;
 }
 
 .header__logo {
@@ -24,6 +54,7 @@ body {
     color: #292929;
     font-size: 26px;
     margin-left: 15px;
+    margin-right: 20px;
     transition: .2s;
 }
 
@@ -33,7 +64,7 @@ body {
 
 .main {
     display: grid;
-    grid-template-columns: 20% 79%;
+    grid-template-columns: 16% 83%;
     column-gap: 1%;
     margin: 10px 10px 10px;
 }

@@ -35,7 +35,7 @@ body {
 .navigation__link {
     text-decoration: none;
     color: white;
-    margin-left: 15px;
+    margin-right: 18px;
     font-size: 18px;
     font-weight: 400;
     padding: 8px 14px 8px;
@@ -57,7 +57,7 @@ body {
 .info__item {
     color: rgba(150, 150, 158);
     font-size: 14px;
-    margin-top: 40px;
+    margin-top: 140px;
 }
 .info__text {
     display: flex;
