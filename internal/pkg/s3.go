@@ -10,7 +10,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3"
 )
 
-func S3LoadFile(filePath string) error {
+func S3LoadFile(fileName, filePath string) error {
 	cfg := aws.Config{
 		Credentials: credentials.NewStaticCredentials(
 			"K38JZH3070T8QFYVDBWF",                     // ACCESS_KEY из вашего окружения
@@ -38,7 +38,7 @@ func S3LoadFile(filePath string) error {
 	input := &s3.PutObjectInput{
 		Body:   file,
 		Bucket: aws.String("001b3177-49d13eec-a629-4743-ba8e-e47b1894d535"),
-		Key:    aws.String(file.Name()),
+		Key:    aws.String(fileName),
 	}
 
 	// Загрузка файла в S3

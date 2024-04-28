@@ -57,7 +57,7 @@ func AddFileForm(c echo.Context) error {
 
 	println("File uploaded successfully")
 	// Закончился код загрузки файла
-	err = pkg.S3LoadFile(dstPath)
+	err = pkg.S3LoadFile(file.Filename, dstPath)
 	if err != nil {
 		return err
 	}
