@@ -7,17 +7,17 @@ import (
 )
 
 type Chat struct {
-	Id          int
-	UserId      string
-	UserName    string
-	ChatId      string
-	Calm        int
-	Disgust     int
-	Openness    int
-	Sociability int
-	Anger       int
-	Balance     int
-	Depression  int
+	Id       int
+	UserId   string
+	UserName string
+	ChatId   string
+	Anger    int
+	Disgust  int
+	Fear     int
+	Happy    int
+	Neutral  int
+	Sad      int
+	Suprised int
 }
 
 type ChatInterface interface {
@@ -42,7 +42,7 @@ func (c *Chat) ReadAll() ([]Chat, error) {
 	for rows.Next() {
 		var chat Chat
 		// Сканирование данных из строки результата в переменные структуры Conference
-		err := rows.Scan(&chat.Id, &chat.UserId, &chat.UserName, &chat.ChatId, &chat.Calm, &chat.Disgust, &chat.Openness, &chat.Sociability, &chat.Anger, &chat.Balance, &chat.Depression)
+		err := rows.Scan(&chat.Id, &chat.UserId, &chat.UserName, &chat.ChatId, &chat.Anger, &chat.Disgust, &chat.Fear, &chat.Happy, &chat.Neutral, &chat.Sad, &chat.Suprised)
 		if err != nil {
 			return nil, fmt.Errorf("ошибка при сканировании строки результата: %v", err)
 		}

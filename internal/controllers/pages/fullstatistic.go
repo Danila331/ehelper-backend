@@ -1,6 +1,7 @@
 package pages
 
 import (
+	"fmt"
 	"path/filepath"
 	"text/template"
 
@@ -8,6 +9,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Функция для отображения полной статистики по конференциям
 func FulStatisticPageConf(c echo.Context) error {
 
 	fullstatistic, err := pkg.GetFulResultConf()
@@ -28,22 +30,24 @@ func FulStatisticPageConf(c echo.Context) error {
 	return nil
 }
 
-// func FulStatisticPageChat(c echo.Context) error {
+// Функция для отображения полной статистики по чатам
+func FulStatisticPageChat(c echo.Context) error {
 
-// 	fullstatistic, err := pkg.GetFulResultCont()
-// 	if err != nil {
-// 		return err
-// 	}
+	fullstatistic, err := pkg.GetFulResultChat()
+	fmt.Println(fullstatistic)
+	if err != nil {
+		return err
+	}
 
-// 	htmlFiles := []string{
-// 		filepath.Join("./", "templates", "fulstatisticconf.html"),
-// 	}
+	htmlFiles := []string{
+		filepath.Join("./", "templates", "fulstatisticchat.html"),
+	}
 
-// 	templ, err := template.ParseFiles(htmlFiles...)
-// 	if err != nil {
-// 		return err
-// 	}
+	templ, err := template.ParseFiles(htmlFiles...)
+	if err != nil {
+		return err
+	}
 
-// 	templ.ExecuteTemplate(c.Response(), "fulstatistic", fullstatistic)
-// 	return nil
-// }
+	templ.ExecuteTemplate(c.Response(), "fulstatisticchat", fullstatistic)
+	return nil
+}

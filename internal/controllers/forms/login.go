@@ -43,16 +43,21 @@ func LoginForm(c echo.Context) error {
 		return err
 	}
 
-	cookie := http.Cookie{
-		Name:     "jwt",
-		Value:    tokenString,
-		Expires:  time.Now().Add(time.Hour * 160), // Пример: установка срока действия куки на 24 часа
-		HttpOnly: true,
-		Secure:   false, // Установите true для HTTPS
-		SameSite: http.SameSiteStrictMode,
-	}
+	cookie := new(http.Cookie)
+	// Name:     "jwt",
+	// Value:    tokenString,
+	// Expires:  time.Now().Add(time.Hour * 160), // Пример: установка срока действия куки на 24 часа
+	// HttpOnly: true,
+	// Secure:   false, // Установите true для HTTPS
+	// SameSite: http.SameSiteStrictMode,
+	cookie.Name = "jwt"
+	cookie.Value = tokenString
+	cookie.Expires = time.Now().Add(time.Hour * 160)
+	cookie.HttpOnly = true
+	cookie.Secure = false
+	cookie.SameSite = http.SameSiteNoneMode
 
-	c.SetCookie(&cookie)
+	c.SetCookie(cookie)
 	fmt.Println(cookie)
 
 	htmlFiles := []string{

@@ -34,7 +34,8 @@ func StartServer() {
 	chat := e.Group("/chat")
 	chat.Use(midleware.AuthMiddleware)
 	chat.GET("/statistic", pages.StatisticPageChat)
-	// e.GET("/chat/fulstatistic", pages.FulStatisticPageChat)
+	chat.GET("/fulstatistic", pages.FulStatisticPageChat)
+
 	conf := e.Group("/conf")
 	conf.GET("/fulstatistic", pages.FulStatisticPageConf)
 	conf.GET("/statistic", pages.StatisticPageConf)

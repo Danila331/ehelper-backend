@@ -3,13 +3,13 @@ package pkg
 import "github.com/Danila331/mifiotsos/internal/models"
 
 type FulResultChat struct {
-	Calm        int
-	Disgust     int
-	Openness    int
-	Sociability int
-	Anger       int
-	Balance     int
-	Depression  int
+	Anger    float64
+	Disgust  float64
+	Fear     float64
+	Happy    float64
+	Neutral  float64
+	Sad      float64
+	Suprised float64
 }
 
 type FulResultConf struct {
@@ -20,6 +20,71 @@ type FulResultConf struct {
 	Happiness  float64
 	Neutral    float64
 	Sadness    float64
+}
+
+func GetFulResultChat() (FulResultChat, error) {
+	var chat models.Chat
+	var fulresult FulResultChat
+	chats, err := chat.ReadAll()
+	if err != nil {
+		return FulResultChat{}, err
+	}
+	anger := 0.0
+	disgust := 0.0
+	fear := 0.0
+	happy := 0.0
+	neutral := 0.0
+	sad := 0.0
+	suprised := 0.0
+
+	angerCount := 0
+	disgustCount := 0
+	fearCount := 0
+	happyCount := 0
+	neutralCount := 0
+	sadCount := 0
+	suprisedCount := 0
+
+	for _, el := range chats {
+		if el.Anger != 0 {
+			anger += float64(el.Anger)
+			angerCount++
+		}
+		if el.Disgust != 0 {
+			disgust += float64(el.Disgust)
+			disgustCount++
+		}
+		if el.Fear != 0 {
+			fear += float64(el.Fear)
+			fearCount++
+		}
+		if el.Happy != 0 {
+			happy += float64(el.Happy)
+			happyCount++
+		}
+		if el.Neutral != 0 {
+			neutral += float64(el.Neutral)
+			neutralCount++
+		}
+
+		if el.Sad != 0 {
+			sad += float64(el.Sad)
+			sadCount++
+		}
+
+		if el.Suprised != 0 {
+			suprised += float64(el.Suprised)
+			suprisedCount++
+		}
+	}
+	fulresult.Anger = Round(anger/float64(angerCount), 2)
+	fulresult.Disgust = Round(disgust/float64(disgustCount), 2)
+	fulresult.Fear = Round(fear/float64(fearCount), 2)
+	fulresult.Happy = Round(happy/float64(happyCount), 2)
+	fulresult.Neutral = Round(neutral/float64(neutralCount), 2)
+	fulresult.Sad = Round(sad/float64(sadCount), 2)
+	fulresult.Suprised = Round(suprised/float64(suprisedCount), 2)
+	return fulresult, nil
 }
 
 func GetFulResultConf() (FulResultConf, error) {

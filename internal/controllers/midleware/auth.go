@@ -1,6 +1,7 @@
 package midleware
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/Danila331/mifiotsos/internal/pkg"
@@ -12,12 +13,12 @@ func AuthMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		// Получаем куки из запроса
 		cookie, err := c.Cookie("jwt")
+		fmt.Println(cookie, err)
 		if err != nil {
 			// Если куки отсутствуют, возвращаем ошибку
 			return echo.NewHTTPError(http.StatusUnauthorized, "Unauthorized")
 		}
 
-		// Получаем токен из куки
 		tokenString := cookie.Value
 
 		email, err := pkg.ExtractEmailFromToken(tokenString)

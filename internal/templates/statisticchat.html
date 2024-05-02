@@ -27,29 +27,37 @@
                     <img src="/static/images/main/table-grid.png" alt="/statistic" class="navigation__icon">
                     <p class="navigation__header">Таблица</p>
                 </a>
+                <a href="/chat/fulstatistic" class="navigation__link">
+                    <img src="/static/images/main/grid.png" alt="/fulstatistic" class="navigation__icon">
+                    <p class="navigation__header">Общая статистика</p>
+                </a>
+                <a href="/chat/graphics" class="navigation__link">
+                    <img src="/static/images/main/pie-chart.png" alt="/infographics" class="navigation__icon">
+                    <p class="navigation__header">Инфографика</p>
+                </a>
             </div>
         </div>
         <div class="block__analis">
             <a class="analis__row" href="#">
-                <p class="analis__pul">Пользователь</p>
-                <p class="analis__pul">Спокойствие</p>
-                <p class="analis__pul">Раздражительность</p>
-                <p class="analis__pul">Открытость</p>
-                <p class="analis__pul">Общительность</p>
-                <p class="analis__pul">Агрессивность</p>
-                <p class="analis__pul">Уравновешенность</p>
-                <p class="analis__pul">Депрессивность</p>
+                <p class="analis__pul">Сотрудник</p>
+                <p class="analis__pul">Гнев</p>
+                <p class="analis__pul">Отвращение</p>
+                <p class="analis__pul">Страх</p>
+                <p class="analis__pul">Счастье</p>
+                <p class="analis__pul">Нейтральность</p>
+                <p class="analis__pul">Грусть</p>
+                <p class="analis__pul">Удивление</p>
             </a>
             {{ range . }}
             <a class="analis__row" href="#">
                 <p class="analis__pul">{{.UserName}}</p>
-                <p class="analis__pul">{{ .Calm }} б</p>
-                <p class="analis__pul">{{ .Disgust }} б</p>
-                <p class="analis__pul">{{ .Openness }} б</p>
-                <p class="analis__pul">{{ .Sociability }} б</p>
-                <p class="analis__pul">{{ .Anger }} б</p>
-                <p class="analis__pul">{{ .Balance }} б</p>
-                <p class="analis__pul">{{ .Depression }} б</p>
+                <p class="analis__pul">{{ .Anger }}б</p>
+                <p class="analis__pul">{{ .Disgust }}б</p>
+                <p class="analis__pul">{{ .Fear }}б</p>
+                <p class="analis__pul">{{ .Happy }}б</p>
+                <p class="analis__pul">{{ .Neutral }}б</p>
+                <p class="analis__pul">{{ .Sad}}б</p>
+                <p class="analis__pul">{{ .Suprised}}б</p>
             </a>
             {{ end }}
         </div>
