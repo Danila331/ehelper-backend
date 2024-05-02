@@ -1,0 +1,25 @@
+{{ define "addchat" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/form.css">
+    <title>Add chat Ehelper</title>
+</head>
+<body>
+    <div class="header">
+        <a class="header__logo" href="/"><span style="color:#6600BA">E</span>helper</a>
+    </div>
+    <h2 class="form__header">Put your telegram chatid</h2>
+    <div class="form__minitext">
+        <p class="form__text">Если не знаете, как узнать chatid своего чата, то вам</p>
+        <a href="#" class="form__link">Сюда</a>
+    </div>
+    <form action="/add-chat/submit" method="post" class="form" enctype="multipart/form-data">
+        <input class="form__field" type="number" name="chat" placeholder="chatid" required>
+        <input class="form__submit" type="submit" value="Загрузить файл">
+    </form>
+</body>
+</html>
+{{ end }}

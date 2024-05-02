@@ -27,13 +27,13 @@ func GetLineGraphic() {
 	yDataSadness := make([]float64, 0)
 	for index, conf := range conferences {
 		xData1 = append(xData1, float64(index))
-		yDataAnger = append(yDataAnger, Round(conf.Anger, 1))
-		yDataDisgust = append(yDataDisgust, Round(conf.Disgust, 1))
-		yDataEnthusiasm = append(yDataEnthusiasm, Round(conf.Enthusiasm, 1))
-		yDataFear = append(yDataFear, Round(conf.Fear, 1))
-		yDataHappiness = append(yDataHappiness, Round(conf.Happiness, 1))
-		yDataNeutral = append(yDataNeutral, Round(conf.Neutral, 1))
-		yDataSadness = append(yDataSadness, Round(conf.Sadness, 1))
+		yDataAnger = append(yDataAnger, Round(conf.Anger))
+		yDataDisgust = append(yDataDisgust, Round(conf.Disgust))
+		yDataEnthusiasm = append(yDataEnthusiasm, Round(conf.Enthusiasm))
+		yDataFear = append(yDataFear, Round(conf.Fear))
+		yDataHappiness = append(yDataHappiness, Round(conf.Happiness))
+		yDataNeutral = append(yDataNeutral, Round(conf.Neutral))
+		yDataSadness = append(yDataSadness, Round(conf.Sadness))
 	}
 	fmt.Println(yDataAnger)
 	// Добавляем данные для первого графика

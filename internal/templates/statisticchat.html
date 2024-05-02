@@ -17,7 +17,7 @@
             <a class="header__link" href="/conf/statistic" style="color: rgba(19, 152, 170); font-size: 16px">Конференции</a>
             <a class="header__link" href="/chat/statistic" style="color: rgba(19, 152, 170); font-size: 16px; color:rgba(19, 152, 170, 0.5)">Чаты</a>
         </div>
-        <a href="/add-chat/" class="header__button">+ Add chat</a>
+        <a href="/add-chat/" class="header__button">+ Add Chat</a>
     </div>
     <div class="main">
         <div class="main__navigation">
@@ -30,10 +30,6 @@
                 <a href="/chat/fulstatistic" class="navigation__link">
                     <img src="/static/images/main/grid.png" alt="/fulstatistic" class="navigation__icon">
                     <p class="navigation__header">Общая статистика</p>
-                </a>
-                <a href="/chat/graphics" class="navigation__link">
-                    <img src="/static/images/main/pie-chart.png" alt="/infographics" class="navigation__icon">
-                    <p class="navigation__header">Инфографика</p>
                 </a>
             </div>
         </div>
@@ -50,14 +46,14 @@
             </a>
             {{ range . }}
             <a class="analis__row" href="#">
-                <p class="analis__pul">{{.UserName}}</p>
+                <p class="analis__pul">{{ .UserName }}</p>
                 <p class="analis__pul">{{ .Anger }}б</p>
                 <p class="analis__pul">{{ .Disgust }}б</p>
                 <p class="analis__pul">{{ .Fear }}б</p>
                 <p class="analis__pul">{{ .Happy }}б</p>
                 <p class="analis__pul">{{ .Neutral }}б</p>
-                <p class="analis__pul">{{ .Sad}}б</p>
-                <p class="analis__pul">{{ .Suprised}}б</p>
+                <p class="analis__pul">{{ .Sad }}б</p>
+                <p class="analis__pul">{{ .Suprised }}б</p>
             </a>
             {{ end }}
         </div>

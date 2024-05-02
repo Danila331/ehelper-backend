@@ -32,7 +32,13 @@ func StatisticPageConf(c echo.Context) error {
 
 func StatisticPageChat(c echo.Context) error {
 	var chat models.Chat
-	chats, err := chat.ReadAll()
+	var user models.User
+
+	user, err := user.ReadByEmail(c.Get("email").(string))
+	if err != nil {
+		return err
+	}
+	chats, err := chat.ReadAllByAvr(user.ChatsId)
 	fmt.Println(err)
 	if err != nil {
 		return err

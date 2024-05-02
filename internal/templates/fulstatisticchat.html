@@ -12,9 +12,12 @@
 </head>
 <body>
     <div class="header">
-        <a class="header__logo" href="/"><span style="color:#6600BA">E</span>helper</a>
-        <a class="header__logo" href="/conf/statistic" style="color: rgb(21, 173, 193); font-size: 16px">Конференции</a>
-        <a class="header__logo" href="/chat/statistic" style="color: rgb(21, 173, 193); font-size: 16px; color:rgba(19, 152, 170, 0.5)">Чаты</a>
+        <div class="header__navigation">
+            <a class="header__logo" href="/"><span style="color:#6600BA">E</span>helper</a>
+            <a class="header__link" href="/conf/statistic" style="color: rgba(19, 152, 170); font-size: 16px">Конференции</a>
+            <a class="header__link" href="/chat/statistic" style="color: rgba(19, 152, 170); font-size: 16px; color:rgba(19, 152, 170, 0.5)">Чаты</a>
+        </div>
+        <a href="/add-chat/" class="header__button">+ Add Chat</a>
     </div>
     <div class="main">
         <div class="main__navigation">
@@ -28,15 +31,11 @@
                     <img src="/static/images/main/grid.png" alt="#" class="navigation__icon">
                     <p class="navigation__header">Общая статистика</p>
                 </a>
-                <a href="/chat/graphics" class="navigation__link">
-                    <img src="/static/images/main/pie-chart.png" alt="#" class="navigation__icon">
-                    <p class="navigation__header">Инфографика</p>
-                </a>
             </div>
         </div>
         <div class="block__analis">
             <div class="analis__block1">
-                <h2 class="analis__block1-header">Общая эмоциональная <span style="color:#6600BA">окраска</span> ваших конференций</h2>
+                <h2 class="analis__block1-header">Общая эмоциональная <span style="color:#6600BA">окраска</span> вашего чата</h2>
             </div>
             <div class="analis__block2">
                 <div class="analis__text">
@@ -51,13 +50,13 @@
                 </div>
                 <div class="analis__text analis__text2 ">
                     <h2 class="analis__header">Баллы</h2>
-                    <p class="analis__pul">{{ .Anger }}%</p>
-                    <p class="analis__pul">{{ .Disgust }}%</p>
-                    <p class="analis__pul">{{ .Fear }}%</p>
-                    <p class="analis__pul">{{ .Happy }}%</p>
-                    <p class="analis__pul">{{ .Neutral }}%</p>
-                    <p class="analis__pul">{{ .Sad}}%</p>
-                    <p class="analis__pul">{{ .Suprised}}%</p>
+                    <p class="analis__pul">{{ .Anger }}б</p>
+                    <p class="analis__pul">{{ .Disgust }}б</p>
+                    <p class="analis__pul">{{ .Fear }}б</p>
+                    <p class="analis__pul">{{ .Happy }}б</p>
+                    <p class="analis__pul">{{ .Neutral }}б</p>
+                    <p class="analis__pul">{{ .Sad}}б</p>
+                    <p class="analis__pul">{{ .Suprised}}б</p>
                 </div>
             </div>
         </div>

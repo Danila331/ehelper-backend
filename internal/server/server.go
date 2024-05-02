@@ -26,6 +26,11 @@ func StartServer() {
 	login.GET("/", pages.LoginPage)
 	login.POST("/submit", forms.LoginForm)
 
+	addchat := e.Group("/add-chat")
+	addchat.Use(midleware.AuthMiddleware)
+	addchat.GET("/", pages.AddChatPage)
+	addchat.POST("/submit", forms.AddChatForm)
+
 	addFile := e.Group("/add-file")
 	addFile.Use(midleware.AuthMiddleware)
 	addFile.GET("/", pages.AddFilePage)
@@ -42,5 +47,5 @@ func StartServer() {
 	conf.GET("/graphics", pages.GraphiksPageConf)
 
 	// Start server
-	e.Logger.Fatal(e.Start(":8081"))
+	e.Logger.Fatal(e.Start(":8080"))
 }

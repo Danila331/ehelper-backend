@@ -44,11 +44,11 @@ func (u *User) ReadByEmail(email string) (User, error) {
 	}
 	defer conn.Close()
 
-	query := "SELECT id, password, email FROM users WHERE email=$1"
+	query := "SELECT id, password, email, chatsid FROM users WHERE email=$1"
 	row := conn.QueryRow(query, email)
 
 	var user User
-	err = row.Scan(&user.Id, &user.Password, &user.Email)
+	err = row.Scan(&user.Id, &user.Password, &user.Email, &user.ChatsId)
 	if err != nil {
 		return User{}, err
 	}
@@ -62,12 +62,10 @@ func (u *User) Update() error {
 	}
 	defer conn.Close()
 
-	query := `UPDATE "user"
-              SET email=$2, password=$3, chats_id=$4, status=$5
-              WHERE id=$1`
+	query := `UPDATE "users" SET chatsid=$2 WHERE email=$1`
 
 	// Выполнение SQL-запроса
-	_, err = conn.Exec(query, u.Id, u.Password, u.Email, u.ChatsId, u.Status)
+	_, err = conn.Exec(query, u.Email, u.ChatsId)
 	if err != nil {
 		return fmt.Errorf("failed to update user: %v", err)
 	}

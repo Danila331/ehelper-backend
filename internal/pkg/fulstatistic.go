@@ -77,13 +77,13 @@ func GetFulResultChat() (FulResultChat, error) {
 			suprisedCount++
 		}
 	}
-	fulresult.Anger = Round(anger/float64(angerCount), 2)
-	fulresult.Disgust = Round(disgust/float64(disgustCount), 2)
-	fulresult.Fear = Round(fear/float64(fearCount), 2)
-	fulresult.Happy = Round(happy/float64(happyCount), 2)
-	fulresult.Neutral = Round(neutral/float64(neutralCount), 2)
-	fulresult.Sad = Round(sad/float64(sadCount), 2)
-	fulresult.Suprised = Round(suprised/float64(suprisedCount), 2)
+	fulresult.Anger = Round(anger / float64(angerCount))
+	fulresult.Disgust = Round(disgust / float64(disgustCount))
+	fulresult.Fear = Round(fear / float64(fearCount))
+	fulresult.Happy = Round(happy / float64(happyCount))
+	fulresult.Neutral = Round(neutral / float64(neutralCount))
+	fulresult.Sad = Round(sad / float64(sadCount))
+	fulresult.Suprised = Round(suprised / float64(suprisedCount))
 	return fulresult, nil
 }
 
@@ -140,12 +140,12 @@ func GetFulResultConf() (FulResultConf, error) {
 			sadness_count++
 		}
 	}
-	fulresult.Anger = Round(anger/float64(anger_count), 2)
-	fulresult.Disgust = Round(disgust/float64(disgust_count), 2)
-	fulresult.Enthusiasm = Round(enthusiasm/float64(enthusiasm_count), 2)
-	fulresult.Fear = Round(fear/float64(fear_count), 2)
-	fulresult.Happiness = Round(happiness/float64(happiness_count), 2)
-	fulresult.Neutral = Round(neutral/float64(neutral_count), 2)
-	fulresult.Sadness = Round(sadness/float64(sadness_count), 2)
+	fulresult.Anger = Round(anger / float64(anger_count))
+	fulresult.Disgust = Round(disgust / float64(disgust_count))
+	fulresult.Enthusiasm = Round(enthusiasm / float64(enthusiasm_count))
+	fulresult.Fear = Round(fear / float64(fear_count))
+	fulresult.Happiness = Round(happiness / float64(happiness_count))
+	fulresult.Neutral = Round(neutral / float64(neutral_count))
+	fulresult.Sadness = Round(sadness / float64(sadness_count))
 	return fulresult, nil
 }
