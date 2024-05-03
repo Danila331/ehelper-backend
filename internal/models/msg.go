@@ -6,7 +6,8 @@ import (
 	"github.com/Danila331/mifiotsos/internal/store"
 )
 
-type Chat struct {
+// Структура сообщений
+type Msg struct {
 	Id       int
 	UserId   string
 	UserName string
@@ -20,7 +21,8 @@ type Chat struct {
 	Suprised int
 }
 
-type ChatAverage struct {
+// Структура сообщений только со среднем значением
+type MsgAverage struct {
 	Id       int
 	UserId   string
 	UserName string
@@ -33,15 +35,18 @@ type ChatAverage struct {
 	Sad      float64
 	Suprised float64
 }
-type ChatInterface interface {
-	ReadAll() ([]Chat, error)
-	ReadAllByAvr() ([]ChatAverage, error)
+
+// Интерфейс для реализации методов
+type MsgInterface interface {
+	ReadAll() ([]Msg, error)
+	ReadAllByAvr() ([]MsgAverage, error)
 }
 
-func (c *Chat) ReadAllByAvr(chatid string) ([]ChatAverage, error) {
+// Метод для получения среднего по пользователям и чатам
+func (m *Msg) ReadAllByAvr(chatid string) ([]MsgAverage, error) {
 	db, err := store.ConnectDB()
 	if err != nil {
-		return []ChatAverage{}, err
+		return []MsgAverage{}, err
 	}
 	defer db.Close()
 	rows, err := db.Query(`
@@ -58,28 +63,30 @@ func (c *Chat) ReadAllByAvr(chatid string) ([]ChatAverage, error) {
 		GROUP BY "username"
 	`, chatid)
 	if err != nil {
-		return []ChatAverage{}, err
+		return []MsgAverage{}, err
 	}
 
 	defer rows.Close()
 
-	var chats []ChatAverage
+	var msgs []MsgAverage
 	for rows.Next() {
-		var chat ChatAverage
-		err = rows.Scan(&chat.UserName, &chat.Anger, &chat.Disgust, &chat.Fear, &chat.Happy, &chat.Neutral, &chat.Sad, &chat.Suprised)
+		var msg MsgAverage
+		err = rows.Scan(&msg.UserName, &msg.Anger, &msg.Disgust, &msg.Fear, &msg.Happy, &msg.Neutral, &msg.Sad, &msg.Suprised)
 		if err != nil {
-			return []ChatAverage{}, err
+			return []MsgAverage{}, err
 		}
-		chats = append(chats, chat)
+		msgs = append(msgs, msg)
 	}
 
-	return chats, nil
+	return msgs, nil
 
 }
-func (c *Chat) ReadAll() ([]Chat, error) {
+
+// Метод для получения всех сообщений из базыданных
+func (m *Msg) ReadAll() ([]Msg, error) {
 	db, err := store.ConnectDB()
 	if err != nil {
-		return []Chat{}, err
+		return []Msg{}, err
 	}
 	defer db.Close()
 	rows, err := db.Query(`SELECT * FROM msgs`)
@@ -88,22 +95,22 @@ func (c *Chat) ReadAll() ([]Chat, error) {
 	}
 	defer rows.Close()
 
-	var chats []Chat
+	var msgs []Msg
 
 	// Итерация по результатам запроса
 	for rows.Next() {
-		var chat Chat
+		var msg Msg
 		// Сканирование данных из строки результата в переменные структуры Conference
-		err := rows.Scan(&chat.Id, &chat.UserId, &chat.UserName, &chat.ChatId, &chat.Anger, &chat.Disgust, &chat.Fear, &chat.Happy, &chat.Neutral, &chat.Sad, &chat.Suprised)
+		err := rows.Scan(&msg.Id, &msg.UserId, &msg.UserName, &msg.ChatId, &msg.Anger, &msg.Disgust, &msg.Fear, &msg.Happy, &msg.Neutral, &msg.Sad, &msg.Suprised)
 		if err != nil {
 			return nil, fmt.Errorf("ошибка при сканировании строки результата: %v", err)
 		}
 		// Добавление конференции в срез
-		chats = append(chats, chat)
+		msgs = append(msgs, msg)
 	}
 	if err := rows.Err(); err != nil {
 		return nil, fmt.Errorf("ошибка при итерации по результатам запроса: %v", err)
 	}
 
-	return chats, nil
+	return msgs, nil
 }

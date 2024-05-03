@@ -8,6 +8,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Функция для отображения графика состояния конференций
 func GraphiksPageConf(c echo.Context) error {
 	htmlFiles := []string{
 		filepath.Join("./", "templates", "graphicsconf.html"),

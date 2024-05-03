@@ -9,6 +9,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Функция для отображения статистики конференций
 func StatisticPageConf(c echo.Context) error {
 	var conference models.Conferences
 	conferences, err := conference.ReadAll()
@@ -30,15 +31,16 @@ func StatisticPageConf(c echo.Context) error {
 	return nil
 }
 
+// Функция для отобрадения статистики чатов
 func StatisticPageChat(c echo.Context) error {
-	var chat models.Chat
+	var msg models.Msg
 	var user models.User
 
 	user, err := user.ReadByEmail(c.Get("email").(string))
 	if err != nil {
 		return err
 	}
-	chats, err := chat.ReadAllByAvr(user.ChatsId)
+	msgs, err := msg.ReadAllByAvr(user.ChatsId)
 	fmt.Println(err)
 	if err != nil {
 		return err
@@ -53,6 +55,6 @@ func StatisticPageChat(c echo.Context) error {
 		return err
 	}
 
-	templ.ExecuteTemplate(c.Response(), "statistic", chats)
+	templ.ExecuteTemplate(c.Response(), "statistic", msgs)
 	return nil
 }

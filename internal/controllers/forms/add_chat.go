@@ -9,6 +9,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Функция для обработки формы добавления чата
 func AddChatForm(c echo.Context) error {
 	var user models.User
 	email := c.Get("email").(string)

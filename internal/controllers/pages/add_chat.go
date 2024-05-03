@@ -7,6 +7,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Функция для отображения формы добавления чата
 func AddChatPage(c echo.Context) error {
 	htmlFiles := []string{
 		filepath.Join("./", "templates", "forms", "addchat.html"),

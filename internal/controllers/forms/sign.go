@@ -8,6 +8,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Функция для обработки формы регистрации
 func SignForm(c echo.Context) error {
 	user := models.User{
 		Password: c.FormValue("password"),

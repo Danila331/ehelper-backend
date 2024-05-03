@@ -7,6 +7,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Функция для отобрадения страницы регистрации
 func SignPage(c echo.Context) error {
 	htmlFiles := []string{
 		filepath.Join("./", "templates", "forms", "sign.html"),

@@ -32,7 +32,6 @@ func FulStatisticPageConf(c echo.Context) error {
 
 // Функция для отображения полной статистики по чатам
 func FulStatisticPageChat(c echo.Context) error {
-
 	fullstatistic, err := pkg.GetFulResultChat()
 	fmt.Println(fullstatistic)
 	if err != nil {

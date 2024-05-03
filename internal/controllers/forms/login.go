@@ -12,6 +12,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Функция для обработки формы login
 func LoginForm(c echo.Context) error {
 	password := c.FormValue("password")
 	email := c.FormValue("email")
@@ -49,12 +50,6 @@ func LoginForm(c echo.Context) error {
 		Expires: time.Now().Add(time.Hour * 160),
 		Path:    "/",
 	}
-	// Name:     "jwt",
-	// Value:    tokenString,
-	// Expires:  time.Now().Add(time.Hour * 160), // Пример: установка срока действия куки на 24 часа
-	// HttpOnly: true,
-	// Secure:   false, // Установите true для HTTPS
-	// SameSite: http.SameSiteStrictMode,
 
 	http.SetCookie(c.Response(), &cookie)
 	fmt.Println(cookie)

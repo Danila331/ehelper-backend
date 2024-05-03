@@ -12,6 +12,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Функция для обработки формы добваления файла
 func AddFileForm(c echo.Context) error {
 	var conference models.Conferences
 	file, err := c.FormFile("fileToUpload")

@@ -23,9 +23,9 @@ type FulResultConf struct {
 }
 
 func GetFulResultChat() (FulResultChat, error) {
-	var chat models.Chat
+	var msg models.Msg
 	var fulresult FulResultChat
-	chats, err := chat.ReadAll()
+	msgs, err := msg.ReadAll()
 	if err != nil {
 		return FulResultChat{}, err
 	}
@@ -45,7 +45,7 @@ func GetFulResultChat() (FulResultChat, error) {
 	sadCount := 0
 	suprisedCount := 0
 
-	for _, el := range chats {
+	for _, el := range msgs {
 		if el.Anger != 0 {
 			anger += float64(el.Anger)
 			angerCount++
