@@ -6,6 +6,7 @@ import (
 	"github.com/Danila331/mifiotsos/internal/store"
 )
 
+// Структура user
 type User struct {
 	Id       int    //Id
 	Password string //Password
@@ -14,12 +15,14 @@ type User struct {
 	Status   string //Status для подписки, тип подписки
 }
 
+// Интерфейс который реализует все методы user
 type UserINterface interface {
 	Create() error
 	Update() error
 	ReadByEmail() (User, error)
 }
 
+// Метод для создавания user в бд
 func (u *User) Create() error {
 	conn, err := store.ConnectDB()
 	if err != nil {
@@ -37,6 +40,7 @@ func (u *User) Create() error {
 	return nil
 }
 
+// Метод для получения пользователя по почте
 func (u *User) ReadByEmail(email string) (User, error) {
 	conn, err := store.ConnectDB()
 	if err != nil {
@@ -55,6 +59,7 @@ func (u *User) ReadByEmail(email string) (User, error) {
 	return user, nil
 }
 
+// Метод для обновления данных о пользователе
 func (u *User) Update() error {
 	conn, err := store.ConnectDB()
 	if err != nil {

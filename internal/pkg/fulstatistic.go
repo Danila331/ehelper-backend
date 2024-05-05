@@ -2,6 +2,7 @@ package pkg
 
 import "github.com/Danila331/mifiotsos/internal/models"
 
+// Структура для подсчета полной статистики чатов
 type FulResultChat struct {
 	Anger    float64
 	Disgust  float64
@@ -12,6 +13,7 @@ type FulResultChat struct {
 	Suprised float64
 }
 
+// Структура для подсчета полной статистики конференций
 type FulResultConf struct {
 	Anger      float64
 	Disgust    float64
@@ -22,6 +24,7 @@ type FulResultConf struct {
 	Sadness    float64
 }
 
+// Функция для получения полного результата по чатам
 func GetFulResultChat() (FulResultChat, error) {
 	var msg models.Msg
 	var fulresult FulResultChat
@@ -87,6 +90,7 @@ func GetFulResultChat() (FulResultChat, error) {
 	return fulresult, nil
 }
 
+// Функция для получения полного результата по конференциям
 func GetFulResultConf() (FulResultConf, error) {
 	var conference models.Conferences
 	var fulresult FulResultConf

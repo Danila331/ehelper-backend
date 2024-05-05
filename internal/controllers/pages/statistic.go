@@ -40,6 +40,7 @@ func StatisticPageChat(c echo.Context) error {
 	if err != nil {
 		return err
 	}
+	fmt.Println(user.ChatsId)
 	msgs, err := msg.ReadAllByAvr(user.ChatsId)
 	fmt.Println(err)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"github.com/Danila331/mifiotsos/internal/store"
 )
 
+// Структура для конференций
 type Conferences struct {
 	Id         int
 	Date       time.Time
@@ -21,11 +22,13 @@ type Conferences struct {
 	Sadness    float64
 }
 
+// Интерфейс который реализует все методы конференций
 type ConferencesInterface interface {
 	Create() error
 	ReadAll() ([]Conferences, error)
 }
 
+// Метод для создавания конфернции в бд
 func (c *Conferences) Create() error {
 	db, err := store.ConnectDB()
 	if err != nil {
@@ -44,6 +47,7 @@ func (c *Conferences) Create() error {
 	return nil
 }
 
+// Метод для получения всех конференций
 func (c *Conferences) ReadAll() ([]Conferences, error) {
 	db, err := store.ConnectDB()
 	if err != nil {

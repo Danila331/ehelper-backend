@@ -43,13 +43,13 @@ type MsgInterface interface {
 }
 
 // Метод для получения среднего по пользователям и чатам
-func (m *Msg) ReadAllByAvr(chatid string) ([]MsgAverage, error) {
+func (m *Msg) ReadAllByAvr(chatsid string) ([]MsgAverage, error) {
 	db, err := store.ConnectDB()
 	if err != nil {
 		return []MsgAverage{}, err
 	}
 	defer db.Close()
-	rows, err := db.Query(`
+	rows, err := db.Query(fmt.Sprintf(`
 		SELECT "username",
 		       ROUND(AVG("anger"),1) AS "avg_anger",
 		       ROUND(AVG("disgust"),1) AS "avg_disgust",
@@ -59,9 +59,9 @@ func (m *Msg) ReadAllByAvr(chatid string) ([]MsgAverage, error) {
 		       ROUND(AVG("sad"),1) AS "avg_sad",
 		       ROUND(AVG("surprised"),1) AS "avg_suprised"
 		FROM "msgs"
-		WHERE chatid=$1
+		WHERE chatid IN (%s)
 		GROUP BY "username"
-	`, chatid)
+	`, chatsid))
 	if err != nil {
 		return []MsgAverage{}, err
 	}
@@ -79,7 +79,6 @@ func (m *Msg) ReadAllByAvr(chatid string) ([]MsgAverage, error) {
 	}
 
 	return msgs, nil
-
 }
 
 // Метод для получения всех сообщений из базыданных
