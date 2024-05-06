@@ -14,7 +14,7 @@
     <h2 class="form__header">Ошибка {{ .Number }}</h2>
     <div class="form__minitext">
         <p class="form__text">{{ .ErrorString }}</p>
-        <a href="/{{ .BackLink }}" class="form__link">Назад</a>
+        <a href="/{{ .BackLink }}/" class="form__link">{{ .BackLinkText }}</a>
     </div>
 </body>
 </html>

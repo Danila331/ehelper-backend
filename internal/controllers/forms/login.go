@@ -19,10 +19,24 @@ func LoginForm(c echo.Context) error {
 	var user models.User
 	user, err := user.ReadByEmail(email)
 
+	// Ошибка если пользователь не найден
 	if err != nil {
-		return err
+		htmlFiles := []string{
+			filepath.Join("./", "templates", "submit", "err.html"),
+		}
+
+		templ, err := template.ParseFiles(htmlFiles...)
+		if err != nil {
+			return err
+		}
+
+		errorWeb := models.ErrorWeb{Number: "404", ErrorString: "Такого пользователя не существует, зарегистрируйтесь.", BackLinkText: "Регистрация", BackLink: "sign"}
+
+		templ.ExecuteTemplate(c.Response(), "err", errorWeb)
+		return nil
 	}
 
+	// Ошибка если указан не верный пароль
 	if password != user.Password {
 		htmlFiles := []string{
 			filepath.Join("./", "templates", "submit", "err.html"),
@@ -33,7 +47,7 @@ func LoginForm(c echo.Context) error {
 			return err
 		}
 
-		errorWeb := models.ErrorWeb{Number: "535", ErrorWeb: "Неверный пароль, попробуйте еще раз", BackLink: "login"}
+		errorWeb := models.ErrorWeb{Number: "535", ErrorString: "Неверный пароль, попробуйте еще раз", BackLinkText: "Назад", BackLink: "login"}
 
 		templ.ExecuteTemplate(c.Response(), "err", errorWeb)
 		return nil
