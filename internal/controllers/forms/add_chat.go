@@ -12,6 +12,7 @@ import (
 // Функция для обработки формы добавления чата
 func AddChatForm(c echo.Context) error {
 	var user models.User
+
 	email := c.Get("email").(string)
 	user, err := user.ReadByEmail(email)
 

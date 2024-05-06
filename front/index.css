@@ -232,7 +232,9 @@ body {
 }
 
 .footer__text {
-    max-width: 550px;
+    color: rgb(221, 219, 219);
+    max-width: 700px;
+    font-weight: 500;
 }
 
 .footer__links {
@@ -241,7 +243,7 @@ body {
 }
 
 .footer__link {
-    max-width: 50px;
+    max-width: 60px;
     transition: .1s;
     margin-left: 10px;
 }
@@ -251,8 +253,8 @@ body {
 }
 
 .footer__photo {
-    max-width: 32px;
-    border-radius: 5px;
+    max-width: 46px;
+    border-radius: 2px;
 }
 
 .copyright {
@@ -269,3 +271,52 @@ body {
     font-size: 15px;
 }
 
+.comanda__cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 15px;
+}
+
+.comanda__card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    justify-content: space-between;
+    padding: 10px 20px 10px;
+    margin-top: 18px;
+}
+
+.comanda_name {
+    color: white;
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0px;
+    margin-top: 14px;
+}
+
+.comanda__image {
+    max-width: 200px;
+    border-radius: 10px;
+    margin-right: 40px;
+}
+
+.comanda__text {
+    color: rgba(245, 249, 255, .769);
+    font-size: 16px;
+    max-width: 400px;
+    text-align: start;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+.comanda__hex {
+    color: #82898F;
+    margin: 0px;
+    margin-top: 5px;
+    font-size: 15px;
+}
+ 

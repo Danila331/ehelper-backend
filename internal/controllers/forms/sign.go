@@ -16,8 +16,11 @@ func SignForm(c echo.Context) error {
 	}
 	err := user.Create()
 	if err != nil {
-		return err
+		errorWeb := models.ErrorWeb{Number: "409", ErrorString: "Пользователь с такой почтой уже есть, попробуйте войти.", BackLinkText: "Войти", BackLink: "login"}
+		_ = errorWeb.CreatePage(c)
+		return nil
 	}
+
 	htmlFiles := []string{
 		filepath.Join("./", "templates", "submit", "sign_submit.html"),
 	}
