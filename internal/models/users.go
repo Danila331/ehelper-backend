@@ -29,11 +29,12 @@ func (u *User) Create() error {
 		return err
 	}
 	defer conn.Close()
-	query := `INSERT INTO "users" (password, email)
-              VALUES ($1, $2)`
+	query := `INSERT INTO "users" (password, email, chatsid)
+              VALUES ($1, $2, $3)`
 
+	chatsidString := "'000000', '000000'"
 	// Выполнение SQL-запроса
-	_, err = conn.Exec(query, u.Password, u.Email)
+	_, err = conn.Exec(query, u.Password, u.Email, chatsidString)
 	if err != nil {
 		return fmt.Errorf("failed to insert user: %v", err)
 	}

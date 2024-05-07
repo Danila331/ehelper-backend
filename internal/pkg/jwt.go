@@ -26,7 +26,7 @@ func GenerateToken(email, password string) (string, error) {
 		Email:    email,
 		Password: password,
 		StandardClaims: jwt.StandardClaims{
-			ExpiresAt: time.Now().Add(time.Hour * 160).Unix(), // Токен действителен в течение 24 часов
+			ExpiresAt: time.Now().Add(time.Hour * 640).Unix(), // Токен действителен в течение 24 часов
 		},
 	}
 

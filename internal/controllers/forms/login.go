@@ -23,14 +23,14 @@ func LoginForm(c echo.Context) error {
 	if err != nil {
 		errorWeb := models.ErrorWeb{Number: "404", ErrorString: "Такого пользователя не существует, зарегистрируйтесь.", BackLinkText: "Регистрация", BackLink: "sign"}
 		_ = errorWeb.CreatePage(c)
-		return nil
+		return err
 	}
 
 	// Ошибка если указан не верный пароль
-	if password != user.Password {
+	if !pkg.CheckPassword(password, user.Password) {
 		errorWeb := models.ErrorWeb{Number: "535", ErrorString: "Неверный пароль, попробуйте еще раз", BackLinkText: "Назад", BackLink: "login"}
 		_ = errorWeb.CreatePage(c)
-		return nil
+		return err
 	}
 
 	tokenString, err := pkg.GenerateToken(email, password)
@@ -41,7 +41,7 @@ func LoginForm(c echo.Context) error {
 	cookie := http.Cookie{
 		Name:    "jwt",
 		Value:   tokenString,
-		Expires: time.Now().Add(time.Hour * 160),
+		Expires: time.Now().Add(time.Hour * 640),
 		Path:    "/",
 	}
 
