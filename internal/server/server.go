@@ -18,6 +18,17 @@ func StartServer() {
 	// Маршруы для обычных смертных
 	e.GET("/", pages.MainPage)
 
+	// Группа запросов про информацию
+	info := e.Group("/info")
+	info.GET("/pricing", pages.PricingPage)
+
+	// Группа запросов про компанию
+	company := e.Group("/company")
+	company.GET("/team", pages.TeamPage)
+	company.GET("/about", pages.AboutPage)
+	company.GET("/investing", pages.InvestingPage)
+	company.GET("/privacy", pages.PrivacyPage)
+
 	// Группа запросов на регистрацию
 	sign := e.Group("/sign")
 	sign.GET("/", pages.SignPage)
