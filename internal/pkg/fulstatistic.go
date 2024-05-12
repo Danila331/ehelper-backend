@@ -25,10 +25,10 @@ type FulResultConf struct {
 }
 
 // Функция для получения полного результата по чатам
-func GetFulResultChat() (FulResultChat, error) {
+func GetFulResultChat(chatsid string) (FulResultChat, error) {
 	var msg models.Msg
 	var fulresult FulResultChat
-	msgs, err := msg.ReadAll()
+	msgs, err := msg.ReadAll(chatsid)
 	if err != nil {
 		return FulResultChat{}, err
 	}

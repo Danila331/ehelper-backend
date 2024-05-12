@@ -82,13 +82,13 @@ func (m *Msg) ReadAllByAvr(chatsid string) ([]MsgAverage, error) {
 }
 
 // Метод для получения всех сообщений из базыданных
-func (m *Msg) ReadAll() ([]Msg, error) {
+func (m *Msg) ReadAll(chatsid string) ([]Msg, error) {
 	db, err := store.ConnectDB()
 	if err != nil {
 		return []Msg{}, err
 	}
 	defer db.Close()
-	rows, err := db.Query(`SELECT * FROM msgs`)
+	rows, err := db.Query(fmt.Sprintf(`SELECT * FROM msgs WHERE chatid IN (%s)`, chatsid))
 	if err != nil {
 		return nil, fmt.Errorf("ошибка при выполнении запроса SELECT: %v", err)
 	}

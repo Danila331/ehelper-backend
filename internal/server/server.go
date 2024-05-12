@@ -64,5 +64,5 @@ func StartServer() {
 	conf.GET("/graphics", pages.GraphiksPageConf)
 
 	// Start server
-	e.Logger.Fatal(e.Start(":8080"))
+	e.Logger.Fatal(e.Start(":80"))
 }
