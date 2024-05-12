@@ -29,7 +29,7 @@ func (u *User) Create() error {
 		return err
 	}
 	defer conn.Close()
-	query := `INSERT INTO "users" (password, email, chatsid)
+	query := `INSERT INTO "users" (password, email, chats)
               VALUES ($1, $2, $3)`
 
 	chatsidString := "'000000', '000000'"
@@ -49,7 +49,7 @@ func (u *User) ReadByEmail(email string) (User, error) {
 	}
 	defer conn.Close()
 
-	query := "SELECT id, password, email, chatsid FROM users WHERE email=$1"
+	query := "SELECT id, password, email, chats FROM users WHERE email=$1"
 	row := conn.QueryRow(query, email)
 
 	var user User
@@ -68,7 +68,7 @@ func (u *User) Update() error {
 	}
 	defer conn.Close()
 
-	query := `UPDATE "users" SET chatsid=$2 WHERE email=$1`
+	query := `UPDATE "users" SET chats=$2 WHERE email=$1`
 
 	// Выполнение SQL-запроса
 	_, err = conn.Exec(query, u.Email, u.ChatsId)
