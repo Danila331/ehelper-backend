@@ -178,3 +178,138 @@ body {
 .now {
     background-color: #29292945;
 }
+
+.footer {
+    max-width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 0px 25px 10px;
+}
+
+.footer__top {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 15px 20px;
+    border: 1px solid #82898F;
+    border-radius: 10px;
+}
+
+.footer__blocks {
+    display: flex;
+    min-width: 600px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer__block {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+}
+
+
+.footer__bottom {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    color: black;
+    font-weight: 550;
+    font-size: 14px;
+    padding: 10px 15px 10px;
+    border: 1px solid #82898F;
+    border-radius: 10px;
+}
+
+.footer__header {
+    font-weight: 600;
+    font-size: 16px;
+    color: black;
+}
+.footer__text {
+    color: #4a4d51;
+    max-width: 700px;
+    font-weight: 550;
+    text-decoration: none;
+}
+
+.footer__link-text {
+    color: #292929;
+    font-weight: 550;
+    text-decoration: none;
+    margin: 0px;
+    margin-top: 8px;
+    font-size: 14px;
+    transition: .2s;
+}
+
+.footer__link-text:hover {
+    opacity: .8;
+    font-size: 13px;
+}
+
+.footer__contact-header {
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+}
+.footer__contact {
+    color: #292929;
+    font-weight: 550;
+    text-decoration: none;
+    margin: 0px;
+    margin-top: 8px;
+    font-size: 16px;
+    transition: .2s;
+}
+
+.footer__contact:hover {
+    opacity: .8;
+    text-decoration: underline;
+}
+
+.footer__links {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer__link {
+    max-width: 60px;
+    transition: .1s;
+    margin-left: 10px;
+}
+
+.footer__link:hover {
+    opacity: .5;
+}
+
+.footer__photo {
+    max-width: 46px;
+    border-radius: 2px;
+}
+
+.copyright {
+    max-width: 100%;
+    margin: auto;
+    padding: 10px 15px 10px;
+    border: 1px solid #82898F;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.copyright__text {
+    text-align: center;
+    color: #82898F;
+    margin: 0px;
+    font-size: 15px;
+}

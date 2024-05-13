@@ -49,6 +49,7 @@ func (m *Msg) ReadAllByAvr(chatsid string) ([]MsgAverage, error) {
 		return []MsgAverage{}, err
 	}
 	defer db.Close()
+	chatsidString := fmt.Sprintf("%s%s", "'000000', '000000' ", chatsid)
 	rows, err := db.Query(fmt.Sprintf(`
 		SELECT "username",
 		       ROUND(AVG("anger"),1) AS "avg_anger",
@@ -61,7 +62,7 @@ func (m *Msg) ReadAllByAvr(chatsid string) ([]MsgAverage, error) {
 		FROM "msgs"
 		WHERE chatid IN (%s)
 		GROUP BY "username"
-	`, chatsid))
+	`, chatsidString))
 	if err != nil {
 		return []MsgAverage{}, err
 	}
@@ -88,7 +89,8 @@ func (m *Msg) ReadAll(chatsid string) ([]Msg, error) {
 		return []Msg{}, err
 	}
 	defer db.Close()
-	rows, err := db.Query(fmt.Sprintf(`SELECT * FROM msgs WHERE chatid IN (%s)`, chatsid))
+	chatsidString := fmt.Sprintf("%s%s", "'000000', '000000' ", chatsid)
+	rows, err := db.Query(fmt.Sprintf(`SELECT * FROM msgs WHERE chatid IN (%s)`, chatsidString))
 	if err != nil {
 		return nil, fmt.Errorf("ошибка при выполнении запроса SELECT: %v", err)
 	}

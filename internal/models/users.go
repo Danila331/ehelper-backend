@@ -32,9 +32,8 @@ func (u *User) Create() error {
 	query := `INSERT INTO "users" (password, email, chats)
               VALUES ($1, $2, $3)`
 
-	chatsidString := "'000000', '000000'"
 	// Выполнение SQL-запроса
-	_, err = conn.Exec(query, u.Password, u.Email, chatsidString)
+	_, err = conn.Exec(query, u.Password, u.Email, "")
 	if err != nil {
 		return fmt.Errorf("failed to insert user: %v", err)
 	}

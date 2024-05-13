@@ -49,17 +49,60 @@
                 </div>
                 <div class="analis__text analis__text2 ">
                     <h2 class="analis__header">Баллы</h2>
-                    <p class="analis__pul">{{ .Anger }}б</p>
-                    <p class="analis__pul">{{ .Disgust }}б</p>
-                    <p class="analis__pul">{{ .Fear }}б</p>
-                    <p class="analis__pul">{{ .Happy }}б</p>
-                    <p class="analis__pul">{{ .Neutral }}б</p>
-                    <p class="analis__pul">{{ .Sad}}б</p>
-                    <p class="analis__pul">{{ .Suprised}}б</p>
+                    <p class="analis__pul">{{ .Anger }} б / 10 б</p>
+                    <p class="analis__pul">{{ .Disgust }} б / 10 б</p>
+                    <p class="analis__pul">{{ .Fear }} б / 10 б</p>
+                    <p class="analis__pul">{{ .Happy }} б / 10 б</p>
+                    <p class="analis__pul">{{ .Neutral }} б / 10 б</p>
+                    <p class="analis__pul">{{ .Sad}} б / 10 б</p>
+                    <p class="analis__pul">{{ .Suprised}} б / 10 б</p>
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
+    <footer class="footer">
+        <div class="footer__top">
+            <div class="footer__blocks">
+                <div class="footer__block">
+                    <p class="footer__header">
+                        Платформа
+                    </p>
+                    <a href="/" class="footer__link-text">Главная страница</a>
+                    <a href="/sign/" class="footer__link-text">Регистрация</a>
+                    <a href="/login/" class="footer__link-text">Авторизация</a>
+                    <a href="/info/pricing" class="footer__link-text">Тарифы</a>
+                </div>
+                <div class="footer__block">
+                    <p class="footer__header">
+                        Компания
+                    </p>
+                    <a href="/company/about" class="footer__link-text">О нас</a>
+                    <a href="/company/privacy" class="footer__link-text">Политика конфиденциальности</a>
+                    <a href="/company/team" class="footer__link-text">Наша команда</a>
+                    <a href="/company/investing" class="footer__link-text">Сотрудничество</a>
+                </div>
+            </div>
+            <div class="footer__block">
+                    <p class="footer__contact-header">
+                        Контакты
+                    </p>
+                    <a href="mailto:danilapschennikov@yandex.ru" class="footer__contact">danilapschennikov@yandex.ru</a>
+                    <a href="tel:+79774022203" class="footer__contact">+7-977-402-22-03</a>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <div class="footer__text">
+                Миссия Ehelper - стремление помочь руководителям более эффективно отслеживать состояние своих сотрудников и предотвращать возможные проблемы, связанные с их благополучием и производительностью.
+            </div>
+            <div class="footer__links">
+                <a target="_blank" href="https://t.me/e_helperr" class="footer__link telegram"><img src="/static/images/main/telegram-grey.png" alt="" class="footer__photo"></a>
+                <a target="_blank" href="https://github.com/Trum-ok/IT-weekend" class="footer__link"><img src="/static/images/main/github-grey.png" alt="" class="footer__photo"></a>
+            </div>
+        </div>
+    </footer>
+    <div class="copyright">
+        <p class="copyright__text">© 2024 copyright</p>
+    </div>
 </body>
 </html>
 {{ end }}
