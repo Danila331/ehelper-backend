@@ -318,7 +318,7 @@ align-items: center;
 .footer__link {
     max-width: 60px;
     transition: .1s;
-    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .footer__link:hover {
