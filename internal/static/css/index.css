@@ -42,6 +42,20 @@ body {
     transition: .2s;
 }
 
+@media (max-width: 690px) {
+    .header__logo {
+        font-size: 40px;
+    }
+
+    .header__logo:hover {
+        font-size: 38px;
+    }
+
+    .navigation__link {
+        display: none;
+    }
+}
+
 .navigation__link:hover {
     background-color: rgb(30, 30, 30);
     border-radius: 10px;
@@ -59,12 +73,15 @@ body {
     font-size: 14px;
     margin-top: 140px;
 }
+
+
 .info__text {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     max-width: 100%;
 }
+
 .info__minitext {
     color: rgba(245, 249, 255, .769);
     font-size: 25px;
@@ -89,6 +106,39 @@ body {
     font-weight: 400;
     transition: .2s;
     margin-right: 10px;
+}
+
+@media (max-width: 690px) {
+    .info__item {
+        max-width: 500px;
+    }
+    .info {
+        padding: 10px 20px 10px;
+    }
+    
+    .info__text {
+        flex-direction: column;
+        margin: auto;
+        align-items: center;
+        max-width: 500px;
+    }
+
+    .info__button-header {
+        display: none;
+    }
+
+    .info__buttons {
+        margin-left: 20px;
+        max-width: 80px;
+    }
+
+    .info__minitext {
+        font-size: 24px;
+    }
+
+    .bit-text {
+        font-size: 34px;
+     }
 }
 
 .info__button:hover {
@@ -217,6 +267,26 @@ body {
     margin-top: 60px;
 }
 
+@media (max-width: 940px) {
+    .section4__image {
+        max-width: 95%;
+    }
+}
+@media (max-width: 690px) {
+    .section4__header {
+        font-size: 34px;
+    }
+    .section4__card-text {
+        max-width: 70%;
+    } 
+    .number {
+        font-size: 40px;
+    }
+    .section4__miniheader {
+        max-width: 70%;
+    }
+}
+
 .footer {
     max-width: 1360px;
     margin: auto;
@@ -330,6 +400,38 @@ align-items: center;
     border-radius: 2px;
 }
 
+@media (max-width: 940px) {
+    .footer__blocks {
+        min-width: 0px;
+    }
+}
+@media (max-width: 690px) {
+    .footer__top {
+        flex-direction: column;
+    }
+
+    .footer__blocks {
+        flex-direction: column;
+        min-width: 0px;
+    }
+
+    .footer__link-text {
+        text-align: center;
+    }
+
+    .footer__header {
+        text-align: center;
+    }
+
+    .footer__contact {
+        text-align: center;
+    }
+
+    .footer__contact-header {
+        text-align: center;
+    }
+}
+
 .copyright {
     max-width: 1360px;
     margin: auto;
@@ -401,4 +503,25 @@ align-items: center;
     margin: 0px;
     margin-top: 5px;
     font-size: 15px;
+}
+
+@media (max-width: 690px) {
+    .comanda__card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .comanda__image {
+        margin: 0px;
+    }
+
+    .comanda__text {
+        text-align: center;
+    }
+
+    .comanda__image2 {
+        margin: 0px;
+        margin-top: 20px;
+    } 
 }

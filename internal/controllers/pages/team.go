@@ -9,7 +9,7 @@ import (
 
 func TeamPage(c echo.Context) error {
 	htmlFiles := []string{
-		filepath.Join("./", "templates", "processing.html"),
+		filepath.Join("./", "templates", "team.html"),
 	}
 
 	templ, err := template.ParseFiles(htmlFiles...)
@@ -17,6 +17,6 @@ func TeamPage(c echo.Context) error {
 		return err
 	}
 
-	templ.ExecuteTemplate(c.Response(), "processing", nil)
+	templ.ExecuteTemplate(c.Response(), "team", nil)
 	return nil
 }

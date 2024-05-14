@@ -1,20 +1,20 @@
-{{ define "processing"}}
+{{ define "team" }}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/processing.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/index.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <title>Prices</title>
+    <title>Ehelper</title>
 </head>
 <body>
     <div class="header">
         <a class="header__logo" href="/"><span style="color:#6600BA">E</span>helper</a>
         <div class="header__navigation">
-            <a href="/statistic" class="navigation__link">Pricing</a>
+            <a href="/info/pricing" class="navigation__link">Pricing</a>
             <a href="https://t.me/testyandexgptultra_bot" class="navigation__link" target="_blank">Bot</a>
             <a href="https://t.me/e_helperr" class="navigation__link" target="_blank">Media</a>
             <a href="/login/" class="info__button info__button-header">Login</a>
@@ -22,10 +22,50 @@
         </div>
     </div>
     <div class="main">
-        <p class="main__text">
-            Страница на стадии разработки        
-        </p>
-        <a href="/" class="form__link">Главная страница</a>
+        <div class="comanda">
+            <div class="comanda__cards">
+                <a class="comanda__card" href="https://t.me/dq2203" target="_blank">
+                    <img src="/static/images/main/dany.jpeg" alt="" class="comanda__image">
+                    <div class="comanda__block">
+                        <p class="comanda_name">Пшенников Данила</p>
+                        <p class="comanda__text">Я в основном работаю над бекендом нашего продукта, а именно над сайтом, также создаю приятный интерфейс и соединяю его с серверной частью.</p>
+                        <p class="comanda__hex">
+                            #Tech-lead #Full-stack Go developer
+                        </p>
+                        <p class="comanda__hex">
+                            #Tg:@dq2203
+                        </p>
+                    </div>
+                    
+                </a>
+                <a href="https://t.me/OpSonata" class="comanda__card" target="_blank">
+                    <div class="comanda__block">
+                    <p class="comanda_name">Артамонов Аркадий</p>
+                    <p class="comanda__text">Обучаю и дорабатываю различные модели, прорабатываю архитектуру приложения и трачу кэш на латте</p>
+                    <p class="comanda__hex">
+                        #ML-engineer #Python backend developer
+                    </p>
+                    <p class="comanda__hex">
+                        #Tg:@OpSonata
+                    </p>
+                    </div>
+                    <img src="/static/images/main/arkadi.jpeg" alt="" class="comanda__image2">
+                </a>
+                <a class="comanda__card" href="https://t.me/himanana" target="_blank">
+                    <img src="/static/images/main/nasty.jpeg" alt="" class="comanda__image">
+                    <div class="comanda__block">
+                    <p class="comanda_name">Химич Анастасия</p>
+                    <p class="comanda__text">Моя работа заключается в создании и корректировке бизнес-плана, общении с ца и формировании работоспособной и дружной команды. Также я пишу для вас посты и часть текста на сайте.</p>
+                    <p class="comanda__hex">
+                        #Product manager
+                    </p>
+                    <p class="comanda__hex">
+                        #Tg:@himanana
+                    </p>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
     <footer class="footer">
         <div class="footer__top">
