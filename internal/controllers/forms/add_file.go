@@ -5,7 +5,6 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"text/template"
 
 	"github.com/Danila331/mifiotsos/internal/models"
 	"github.com/Danila331/mifiotsos/internal/pkg"
@@ -62,16 +61,9 @@ func AddFileForm(c echo.Context) error {
 	if err != nil {
 		return err
 	}
-	htmlFiles := []string{
-		filepath.Join("./", "templates", "submit", "addfile_submit.html"),
-	}
-
-	templ, err := template.ParseFiles(htmlFiles...)
+	err = pkg.HtmlPageRender("submit/addfile_submit.html", "addfile_submit", c)
 	if err != nil {
 		return err
 	}
-
-	templ.ExecuteTemplate(c.Response(), "addfile_submit", nil)
-
 	return nil
 }

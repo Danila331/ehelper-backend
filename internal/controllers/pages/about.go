@@ -1,22 +1,14 @@
 package pages
 
 import (
-	"path/filepath"
-	"text/template"
-
+	"github.com/Danila331/mifiotsos/internal/pkg"
 	"github.com/labstack/echo/v4"
 )
 
 func AboutPage(c echo.Context) error {
-	htmlFiles := []string{
-		filepath.Join("./", "templates", "processing.html"),
-	}
-
-	templ, err := template.ParseFiles(htmlFiles...)
+	err := pkg.HtmlPageRender("processing.html", "processing", c)
 	if err != nil {
 		return err
 	}
-
-	templ.ExecuteTemplate(c.Response(), "processing", nil)
 	return nil
 }

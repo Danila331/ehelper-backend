@@ -2,10 +2,9 @@ package forms
 
 import (
 	"fmt"
-	"path/filepath"
-	"text/template"
 
 	"github.com/Danila331/mifiotsos/internal/models"
+	"github.com/Danila331/mifiotsos/internal/pkg"
 	"github.com/labstack/echo/v4"
 )
 
@@ -29,16 +28,9 @@ func AddChatForm(c echo.Context) error {
 		return err
 	}
 
-	htmlFiles := []string{
-		filepath.Join("./", "templates", "submit", "addchat_submit.html"),
-	}
-
-	templ, err := template.ParseFiles(htmlFiles...)
+	err = pkg.HtmlPageRender("submit/addchat_submit.html", "addchat_submit", c)
 	if err != nil {
 		return err
 	}
-
-	templ.ExecuteTemplate(c.Response(), "addchat_submit", nil)
-
 	return nil
 }

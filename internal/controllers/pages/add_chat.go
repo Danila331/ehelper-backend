@@ -1,23 +1,15 @@
 package pages
 
 import (
-	"path/filepath"
-	"text/template"
-
+	"github.com/Danila331/mifiotsos/internal/pkg"
 	"github.com/labstack/echo/v4"
 )
 
 // Функция для отображения формы добавления чата
 func AddChatPage(c echo.Context) error {
-	htmlFiles := []string{
-		filepath.Join("./", "templates", "forms", "addchat.html"),
-	}
-
-	templ, err := template.ParseFiles(htmlFiles...)
+	err := pkg.HtmlPageRender("forms/addchat.html", "addchat", c)
 	if err != nil {
 		return err
 	}
-
-	templ.ExecuteTemplate(c.Response(), "addchat", nil)
 	return nil
 }

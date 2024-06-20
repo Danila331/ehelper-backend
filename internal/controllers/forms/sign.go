@@ -1,10 +1,7 @@
 package forms
 
 import (
-	"fmt"
-	"html/template"
 	"net/http"
-	"path/filepath"
 	"time"
 
 	"github.com/Danila331/mifiotsos/internal/models"
@@ -17,24 +14,32 @@ func SignForm(c echo.Context) error {
 	email := c.FormValue("email")
 	password := c.FormValue("password")
 	hashPassword, err := pkg.HashPassword(password)
+
 	if err != nil {
 		return err
 	}
+
 	user := models.User{
 		Password: hashPassword,
 		Email:    email,
 	}
+
 	err = user.Create()
+
+	// Проверяем есть ли такой пользователь с указанной почтой
 	if err != nil {
 		errorWeb := models.ErrorWeb{Number: "409", ErrorString: "Пользователь с такой почтой уже есть, попробуйте войти.", BackLinkText: "Войти", BackLink: "login"}
 		_ = errorWeb.CreatePage(c)
 		return err
 	}
+
+	// Создаем JWT токен для пользователя
 	tokenString, err := pkg.GenerateToken(email, hashPassword)
 	if err != nil {
 		return err
 	}
 
+	// Кладем JWT в Cookie
 	cookie := http.Cookie{
 		Name:    "jwt",
 		Value:   tokenString,
@@ -43,17 +48,12 @@ func SignForm(c echo.Context) error {
 	}
 
 	http.SetCookie(c.Response(), &cookie)
-	fmt.Println(cookie)
 
-	htmlFiles := []string{
-		filepath.Join("./", "templates", "submit", "sign_submit.html"),
-	}
+	err = pkg.HtmlPageRender("submit/sign_submit.html", "sign_submit", c)
 
-	templ, err := template.ParseFiles(htmlFiles...)
 	if err != nil {
 		return err
 	}
 
-	templ.ExecuteTemplate(c.Response(), "sign_submit", nil)
 	return nil
 }
